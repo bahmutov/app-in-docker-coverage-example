@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel serve app/index.html"
+    "start": "parcel serve app/index.html",
+    "docker:start": "docker run -it --rm -v $PWD:/var/to/my/app/e2e -w /var/to/my/app/e2e -p 127.0.0.1:1234:1234 cypress/base:12.16.1 npm start",
+    "docker:dev": "start-test docker:start 1234 cy:open",
+    "docker:run": "start-test docker:start 1234 cy:run",
+    "cy:open": "DEBUG=code-coverage cypress open",
+    "cy:run": "DEBUG=code-coverage cypress run"
   },
   "repository": {
     "type": "git",
@@ -19,8 +24,11 @@
   },
   "homepage": "https://github.com/bahmutov/app-in-docker-coverage-example#readme",
   "devDependencies": {
-    "@cypress/code-coverage": "3.2.4",
+    "@babel/core": "^7.9.0",
+    "@cypress/code-coverage": "3.3.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "cypress": "4.4.0",
-    "parcel-bundler": "1.12.4"
+    "parcel-bundler": "1.12.4",
+    "start-server-and-test": "1.11.0"
   }
 }
