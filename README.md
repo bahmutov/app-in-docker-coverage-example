@@ -6,6 +6,9 @@ This example requires Docker.
 ```shell
 $ npm install
 ```
+
+This will install Cypress and [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) plugin.
+
 2. Start local application in local Docker container with
 ```shell
 $ npm run docker:start
@@ -26,14 +29,20 @@ $ npm run cy:run
 Tests execute, code coverage object is checked to see if the paths in `.nyc_output/out.json` exist locally. If not, it tries to automatically find how the current working folder matches to the Docker folder and files that `$PWD = /var/to/my/app/e2e`. You see it from the last debug messages
 
 ```text
-  code-coverage found prefix that matches current folder: /var/to/my/app/e2e +0ms
-  code-coverage found common folder /var/to/my/app/e2e that matches current working directory /Users/gleb/git/app-in-docker-coverage-example +0ms
-  code-coverage replaced /var/to/my/app/e2e/app/main.js -> /Users/gleb/git/app-in-docker-coverage-example/app/main.js +0ms
-  code-coverage replaced /var/to/my/app/e2e/app/second.js -> /Users/gleb/git/app-in-docker-coverage-example/app/second.js +0ms
-  code-coverage saving updated file /Users/gleb/git/app-in-docker-coverage-example/.nyc_output/out.json +0ms
+code-coverage found prefix that matches current folder: /var/to/my/app/e2e +0ms
+code-coverage found common folder /var/to/my/app/e2e that matches current working directory /Users/gleb/git/app-in-docker-coverage-example +0ms
+code-coverage replaced /var/to/my/app/e2e/app/main.js -> /Users/gleb/git/app-in-docker-coverage-example/app/main.js +0ms
+code-coverage replaced /var/to/my/app/e2e/app/second.js -> /Users/gleb/git/app-in-docker-coverage-example/app/second.js +0ms
+code-coverage saving updated file /Users/gleb/git/app-in-docker-coverage-example/.nyc_output/out.json +0ms
 ```
 
 The report is then generated on the host machine and it has the right files.
 
+```shell
+~/git/app-in-docker-coverage-example on master
+$ open coverage/lcov-report/index.html
+```
 
+![All files](images/all-files.png)
 
+![One file](images/one-file.png)
