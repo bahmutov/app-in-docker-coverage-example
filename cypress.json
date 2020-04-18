@@ -1,4 +1,6 @@
 {
   "fixturesFolder": false,
-  "baseUrl": "http://localhost:1234"
+  "baseUrl": "http://localhost:1234",
+  "supportFile": "node_modules/@cypress/code-coverage/support",
+  "pluginsFile": "node_modules/@cypress/code-coverage/plugins"
 }
